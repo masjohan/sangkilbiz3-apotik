@@ -2,6 +2,9 @@
 
 // set aliases
 Yii::setAlias('biz', dirname(dirname(__DIR__)) . '/biz');
+Yii::setAlias('ext', dirname(dirname(__DIR__)) . '/ext');
+
+include_once Yii::getAlias('@ext/extension.php');
 
 // set DI
 $container = yii\helpers\ArrayHelper::merge(

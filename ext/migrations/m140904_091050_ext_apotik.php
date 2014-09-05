@@ -18,6 +18,7 @@ class m140904_091050_ext_apotik extends Migration
             'dokter' => Schema::TYPE_STRING . '(64) NULL',
             'resep' => Schema::TYPE_STRING . '(64) NULL',
             'extra1' => Schema::TYPE_STRING . '(64) NULL',
+            'PRIMARY KEY (id_sales)',
         ], $tableOptions);
 
         
