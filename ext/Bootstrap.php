@@ -13,9 +13,6 @@ class Bootstrap implements \yii\base\BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $theme = $app->getView()->theme;
-        $theme->pathMap = array_merge($theme->pathMap,[
-            '@biz/sales/views/standart'=>''
-        ]);
+        
     }
 }
