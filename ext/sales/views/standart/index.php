@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'idBranch.nm_branch',
             'sales_date',
             'nmStatus',
+            'dokter',
+            'resep',
             [
                 'class' => 'yii\grid\ActionColumn',
             ],
