@@ -28,7 +28,7 @@ class ExtSales extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_sales'], 'required'],
+//            [['id_sales'], 'required'],
             [['id_sales'], 'integer'],
             [['dokter', 'resep', 'extra1'], 'string', 'max' => 64]
         ];

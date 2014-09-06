@@ -18,7 +18,7 @@ use biz\master\components\Helper as MasterHelper;
     <?php
     $models = $model->salesDtls;
     $models[] = $model;
-    echo $form->errorSummary($models)
+    echo $form->errorSummary($models);
     ?>
     <?= $this->render('_detail', ['model' => $model, 'price' => $price]) ?>
     <div class="col-lg-3" style="padding-right: 0px;">
@@ -28,7 +28,7 @@ use biz\master\components\Helper as MasterHelper;
             </div>
             <div class="panel-body">
                 <?= $form->field($model, 'sales_num')->textInput(['readonly' => true]); ?>
-                <?= $form->field($model, 'id_warehouse')->dropDownList(MasterHelper::getWarehouseList()); ?>
+                <?= Html::activeHiddenInput($model, 'id_warehouse', ['value'=>'1']) ?>
                 <?=
                     $form->field($model, 'salesDate')
                     ->widget('yii\jui\DatePicker', [
@@ -39,16 +39,14 @@ use biz\master\components\Helper as MasterHelper;
                 ]);
                 ?>
                 <hr >
-                <?=
-                    $form->field($model, 'nmCustomer')
-                    ->widget('yii\jui\AutoComplete', [
-                        'options' => ['class' => 'form-control'],
-                        'clientOptions' => [
-                            'source' => new JsExpression('biz.master.customers'),
-                        ],
-                ]);
-                ?>
-                <?= $form->field($model, 'dokter')->textInput()  ?>
+                <?= Html::activeHiddenInput($model, 'id_customer', ['value'=>'1']);?>
+                <?= $form->field($model, 'dokter')->widget('yii\jui\AutoComplete',[
+                    'options'=>['class'=>'form-control'],
+                    'clientOptions'=>[
+                        'source'=>  ext\sales\models\ExtSales::find()->select('dokter')->distinct()->column()
+                    ]
+                ]) ?>
+                <?= $form->field($model, 'resep')->textInput() ?>
                 <?= $form->field($model, 'discount')->textInput() ?>
             </div>
         </div>
